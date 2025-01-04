@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "780823142551",
+    "project_id": "easywheels-2e24a",
+    "storage_bucket": "easywheels-2e24a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780823142551:android:78efe31894da2126afc9d2",
+        "android_client_info": {
+          "package_name": "com.example.easywheels"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv2lZuw3ziZep3yOyKL1iye5YQbV0dE5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
