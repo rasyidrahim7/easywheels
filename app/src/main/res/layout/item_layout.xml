@@ -4,34 +4,29 @@
     android:orientation="vertical"
     android:padding="10dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/vehicleImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:layout_gravity="" />
+
+    <TextView
+        android:id="@+id/vehicleTitleTextView"
+        android:layout_width="358dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:layout_gravity="fill"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:textColor="#000"
+        android:textSize="50sp" />
 
-        <!-- Reduce the size of the icon -->
-        <ImageView
-            android:id="@+id/iconImageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginEnd="10dp" />
-
-        <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="40sp"
-            android:textColor="#000" />
-
-        <ImageView
-            android:id="@+id/arrowImageView"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_arrow_down" />
-    </LinearLayout>
-
+    <ImageView
+        android:id="@+id/arrowImageView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_arrow_down"
+        android:layout_gravity="right"/>
 
     <LinearLayout
         android:id="@+id/expandableLayout"
@@ -41,4 +36,3 @@
         android:visibility="gone"
         android:paddingStart="5dp" />
 </LinearLayout>
-

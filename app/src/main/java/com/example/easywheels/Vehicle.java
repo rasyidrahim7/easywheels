@@ -3,20 +3,20 @@ package com.example.easywheels;
 import java.util.List;
 
 public class Vehicle {
-    private int iconResId;
+    private int imageResId;
     private String title;
-    private boolean isExpanded;
+    private boolean expanded;
     private List<Subcategory> subcategories;
 
-    public Vehicle(int iconResId, String title, boolean isExpanded, List<Subcategory> subcategories) {
-        this.iconResId = iconResId;
+    public Vehicle(int imageResId, String title, List<Subcategory> subcategories) {
+        this.imageResId = imageResId;
         this.title = title;
-        this.isExpanded = isExpanded;
         this.subcategories = subcategories;
+        this.expanded = false; // Default to collapsed
     }
 
-    public int getIconResId() {
-        return iconResId;
+    public int getImageResId() {
+        return imageResId;
     }
 
     public String getTitle() {
@@ -24,11 +24,11 @@ public class Vehicle {
     }
 
     public boolean isExpanded() {
-        return isExpanded;
+        return expanded;
     }
 
     public void setExpanded(boolean expanded) {
-        isExpanded = expanded;
+        this.expanded = expanded;
     }
 
     public List<Subcategory> getSubcategories() {
@@ -37,13 +37,13 @@ public class Vehicle {
 
     public static class Subcategory {
         private String title;
-        private boolean isExpanded;
-        private List<String> details;
+        private boolean expanded;
+        private List<Model> models;
 
-        public Subcategory(String title, boolean isExpanded, List<String> details) {
+        public Subcategory(String title, List<Model> models) {
             this.title = title;
-            this.isExpanded = isExpanded;
-            this.details = details;
+            this.models = models;
+            this.expanded = false; // Default to collapsed
         }
 
         public String getTitle() {
@@ -51,16 +51,51 @@ public class Vehicle {
         }
 
         public boolean isExpanded() {
-            return isExpanded;
+            return expanded;
         }
 
         public void setExpanded(boolean expanded) {
-            isExpanded = expanded;
+            this.expanded = expanded;
         }
 
-        public List<String> getDetails() {
-            return details;
+        public List<Model> getModels() {
+            return models;
+        }
+
+        public static class Model {
+            private String name;
+            private String price1;
+            private String price2;
+            private int imageResId1;
+            private int imageResId2;
+
+            public Model(String name, String price1, String price2, int imageResId1, int imageResId2) {
+                this.name = name;
+                this.price1 = price1;
+                this.price2 = price2;
+                this.imageResId1 = imageResId1;
+                this.imageResId2 = imageResId2;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public String getPrice1() {
+                return price1;
+            }
+
+            public String getPrice2() {
+                return price2;
+            }
+
+            public int getImageResId1() {
+                return imageResId1;
+            }
+
+            public int getImageResId2() {
+                return imageResId2;
+            }
         }
     }
 }
-

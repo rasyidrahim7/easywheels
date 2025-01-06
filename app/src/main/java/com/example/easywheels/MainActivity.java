@@ -43,33 +43,70 @@ public class MainActivity extends AppCompatActivity {
 
         // Car
         List<Vehicle.Subcategory> carSubcategories = new ArrayList<>();
-        carSubcategories.add(new Vehicle.Subcategory("Sedan", false, Arrays.asList("Honda Civic", "S70", "Vios")));
-        carSubcategories.add(new Vehicle.Subcategory("Hatchback", false, Arrays.asList("Myvi", "Axia", "City Hatchback")));
-        carSubcategories.add(new Vehicle.Subcategory("SUV", false, Arrays.asList("X70", "Ativa", "CR-V")));
+        carSubcategories.add(new Vehicle.Subcategory("Sedan", Arrays.asList(
+                new Vehicle.Subcategory.Model("Honda Civic", "RM 120", "RM 140", R.drawable.myvi2, R.drawable.myvi),
+                new Vehicle.Subcategory.Model("Toyota Vios", "RM 140", "RM 160", R.drawable.myvi2, R.drawable.myvi)
+        )));
+        carSubcategories.add(new Vehicle.Subcategory("Hatchback", Arrays.asList(
+                new Vehicle.Subcategory.Model("Perodua Myvi", "RM 120", "RM 130", R.drawable.myvi2, R.drawable.myvi),
+                new Vehicle.Subcategory.Model("Proton Iriz", "RM 45,000", "RM 50,000", R.drawable.myvi2, R.drawable.myvi),
+                new Vehicle.Subcategory.Model("Honda City Hatchback", "RM 60,000", "RM 65,000", R.drawable.myvi2, R.drawable.myvi)
+        )));
+        carSubcategories.add(new Vehicle.Subcategory("SUV", Arrays.asList(
+                new Vehicle.Subcategory.Model("Proton X70", "RM 100,000", "RM 110,000", R.drawable.myvi2, R.drawable.myvi),
+                new Vehicle.Subcategory.Model("Honda CR-V", "RM 150,000", "RM 160,000", R.drawable.myvi2, R.drawable.myvi)
+        )));
 
         // Motorcycle
         List<Vehicle.Subcategory> motorcycleSubcategories = new ArrayList<>();
-        motorcycleSubcategories.add(new Vehicle.Subcategory("Sport", false, Arrays.asList("Yamaha R1", "Honda CBR600RR", "Kawasaki Ninja ZX-6R")));
-        motorcycleSubcategories.add(new Vehicle.Subcategory("Cruiser", false, Arrays.asList("Harley Davidson Street 750", "Royal Enfield Classic 350")));
-        motorcycleSubcategories.add(new Vehicle.Subcategory("Scooter", false, Arrays.asList("Vespa Primavera", "Honda Vario", "Yamaha NMAX")));
+        motorcycleSubcategories.add(new Vehicle.Subcategory("Sport", Arrays.asList(
+                new Vehicle.Subcategory.Model("Yamaha R1", "RM 80,000", "RM 85,000", R.drawable.myvi2, R.drawable.myvi),
+                new Vehicle.Subcategory.Model("Honda CBR600RR", "RM 70,000", "RM 75,000", R.drawable.myvi2, R.drawable.myvi)
+        )));
+        motorcycleSubcategories.add(new Vehicle.Subcategory("Cruiser", Arrays.asList(
+                new Vehicle.Subcategory.Model("Harley Davidson Street 750", "RM 60,000", "RM 65,000", R.drawable.myvi2, R.drawable.myvi),
+                new Vehicle.Subcategory.Model("Royal Enfield Classic 350", "RM 40,000", "RM 45,000", R.drawable.myvi2, R.drawable.myvi)
+        )));
+        motorcycleSubcategories.add(new Vehicle.Subcategory("Scooter", Arrays.asList(
+                new Vehicle.Subcategory.Model("Vespa Primavera", "RM 20,000", "RM 22,000", R.drawable.myvi2, R.drawable.myvi),
+                new Vehicle.Subcategory.Model("Honda Vario", "RM 18,000", "RM 20,000", R.drawable.myvi2, R.drawable.myvi)
+        )));
 
         // Bus
         List<Vehicle.Subcategory> busSubcategories = new ArrayList<>();
-        busSubcategories.add(new Vehicle.Subcategory("Mini Bus", false, Arrays.asList("Toyota Coaster", "Nissan Civilian")));
-        busSubcategories.add(new Vehicle.Subcategory("Double Decker", false, Arrays.asList("Volvo B11R", "Scania K410")));
-        busSubcategories.add(new Vehicle.Subcategory("City Bus", false, Arrays.asList("Mercedes-Benz Citaro", "MAN Lion’s City")));
+        busSubcategories.add(new Vehicle.Subcategory("Mini Bus", Arrays.asList(
+                new Vehicle.Subcategory.Model("Toyota Coaster", "RM 200,000", "RM 220,000", R.drawable.myvi2, R.drawable.myvi),
+                new Vehicle.Subcategory.Model("Nissan Civilian", "RM 250,000", "RM 270,000", R.drawable.myvi2, R.drawable.myvi)
+        )));
+        busSubcategories.add(new Vehicle.Subcategory("Double Decker", Arrays.asList(
+                new Vehicle.Subcategory.Model("Volvo B11R", "RM 600,000", "RM 650,000", R.drawable.myvi2, R.drawable.myvi),
+                new Vehicle.Subcategory.Model("Scania K410", "RM 650,000", "RM 700,000", R.drawable.myvi2, R.drawable.myvi)
+        )));
+        busSubcategories.add(new Vehicle.Subcategory("City Bus", Arrays.asList(
+                new Vehicle.Subcategory.Model("Mercedes-Benz Citaro", "RM 700,000", "RM 750,000", R.drawable.myvi2, R.drawable.myvi),
+                new Vehicle.Subcategory.Model("MAN Lion’s City", "RM 750,000", "RM 800,000", R.drawable.myvi2, R.drawable.myvi)
+        )));
 
         // Lorry
         List<Vehicle.Subcategory> lorrySubcategories = new ArrayList<>();
-        lorrySubcategories.add(new Vehicle.Subcategory("Pickup", false, Arrays.asList("Ford Ranger", "Toyota Hilux", "Isuzu D-Max")));
-        lorrySubcategories.add(new Vehicle.Subcategory("Box Truck", false, Arrays.asList("Hino 300 Series", "Fuso Canter", "Tata LPT")));
-        lorrySubcategories.add(new Vehicle.Subcategory("Trailer", false, Arrays.asList("Volvo FH16", "Scania R500")));
+        lorrySubcategories.add(new Vehicle.Subcategory("Pickup", Arrays.asList(
+                new Vehicle.Subcategory.Model("Ford Ranger", "RM 100,000", "RM 110,000", R.drawable.myvi2, R.drawable.myvi),
+                new Vehicle.Subcategory.Model("Toyota Hilux", "RM 120,000", "RM 130,000", R.drawable.myvi2, R.drawable.myvi)
+        )));
+        lorrySubcategories.add(new Vehicle.Subcategory("Box Truck", Arrays.asList(
+                new Vehicle.Subcategory.Model("Hino 300 Series", "RM 150,000", "RM 160,000", R.drawable.myvi2, R.drawable.myvi),
+                new Vehicle.Subcategory.Model("Fuso Canter", "RM 130,000", "RM 140,000", R.drawable.myvi2, R.drawable.myvi)
+        )));
+        lorrySubcategories.add(new Vehicle.Subcategory("Trailer", Arrays.asList(
+                new Vehicle.Subcategory.Model("Volvo FH16", "RM 500,000", "RM 550,000", R.drawable.myvi2, R.drawable.myvi),
+                new Vehicle.Subcategory.Model("Scania R500", "RM 550,000", "RM 600,000", R.drawable.myvi2, R.drawable.myvi)
+        )));
 
         // Add vehicles to the list
-        vehicles.add(new Vehicle(R.drawable.kereta, "Car", false, carSubcategories));
-        vehicles.add(new Vehicle(R.drawable.motor, "Motorcycle", false, motorcycleSubcategories));
-        vehicles.add(new Vehicle(R.drawable.bas, "Bus", false, busSubcategories));
-        vehicles.add(new Vehicle(R.drawable.lori, "Lorry", false, lorrySubcategories));
+        vehicles.add(new Vehicle(R.drawable.kereta, "Car", carSubcategories));
+        vehicles.add(new Vehicle(R.drawable.motor, "Motorcycle", motorcycleSubcategories));
+        vehicles.add(new Vehicle(R.drawable.bas, "Bus", busSubcategories));
+        vehicles.add(new Vehicle(R.drawable.lori, "Lorry", lorrySubcategories));
 
         return vehicles;
     }

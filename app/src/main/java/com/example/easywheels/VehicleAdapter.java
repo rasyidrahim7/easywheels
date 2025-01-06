@@ -1,5 +1,6 @@
 package com.example.easywheels;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,25 +32,22 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.VehicleV
     public void onBindViewHolder(@NonNull VehicleViewHolder holder, int position) {
         Vehicle vehicle = vehicles.get(position);
 
-        holder.iconImageView.setImageResource(vehicle.getIconResId());
-        holder.titleTextView.setText(vehicle.getTitle());
+        holder.vehicleTitleTextView.setText(vehicle.getTitle());
+        holder.vehicleImageView.setImageResource(vehicle.getImageResId());
 
         // Handle expand/collapse for vehicle
         boolean isExpanded = vehicle.isExpanded();
         holder.expandableLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
-        holder.arrowImageView.setImageResource(
-                isExpanded ? R.drawable.ic_arrow_up : R.drawable.ic_arrow_down
-        );
+        holder.arrowImageView.setImageResource(isExpanded ? R.drawable.ic_arrow_up : R.drawable.ic_arrow_down);
 
         holder.arrowImageView.setOnClickListener(v -> {
             vehicle.setExpanded(!vehicle.isExpanded());
             notifyItemChanged(position);
         });
 
-        // Populate subcategories
+        // Populate subcategories without models
         holder.expandableLayout.removeAllViews();
         for (Vehicle.Subcategory subcategory : vehicle.getSubcategories()) {
-            // Add subcategory title with expand functionality
             View subcategoryView = LayoutInflater.from(holder.itemView.getContext())
                     .inflate(R.layout.subcategory_item, holder.expandableLayout, false);
             TextView subcategoryTitle = subcategoryView.findViewById(R.id.subcategoryTitle);
@@ -58,22 +56,32 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.VehicleV
 
             subcategoryTitle.setText(subcategory.getTitle());
             subcategoryExpandableLayout.setVisibility(subcategory.isExpanded() ? View.VISIBLE : View.GONE);
-            subcategoryArrow.setImageResource(
-                    subcategory.isExpanded() ? R.drawable.ic_arrow_up : R.drawable.ic_arrow_down
-            );
+            subcategoryArrow.setImageResource(subcategory.isExpanded() ? R.drawable.ic_arrow_up : R.drawable.ic_arrow_down);
 
             subcategoryArrow.setOnClickListener(v -> {
                 subcategory.setExpanded(!subcategory.isExpanded());
                 notifyItemChanged(position);
             });
 
-            // Add details under subcategory
+            // Add models under subcategory
             subcategoryExpandableLayout.removeAllViews();
-            for (String detail : subcategory.getDetails()) {
-                TextView detailView = new TextView(holder.itemView.getContext());
-                detailView.setText("• " + detail);
-                detailView.setPadding(20, 5, 10, 5);
-                subcategoryExpandableLayout.addView(detailView);
+            for (Vehicle.Subcategory.Model model : subcategory.getModels()) {
+                TextView modelNameView = new TextView(holder.itemView.getContext());
+                modelNameView.setText(model.getName());
+                modelNameView.setTextSize(18);
+                modelNameView.setPadding(20, 10, 20, 10);
+
+                modelNameView.setOnClickListener(v -> {
+                    Intent intent = new Intent(holder.itemView.getContext(), VehicleModelDetailsActivity.class);
+                    intent.putExtra("modelName", model.getName());
+                    intent.putExtra("price1", model.getPrice1());
+                    intent.putExtra("price2", model.getPrice2());
+                    intent.putExtra("imageResId1", model.getImageResId1());
+                    intent.putExtra("imageResId2", model.getImageResId2());
+                    holder.itemView.getContext().startActivity(intent);
+                });
+
+                subcategoryExpandableLayout.addView(modelNameView);
             }
 
             holder.expandableLayout.addView(subcategoryView);
@@ -86,15 +94,15 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.VehicleV
     }
 
     static class VehicleViewHolder extends RecyclerView.ViewHolder {
-        ImageView iconImageView;
-        TextView titleTextView;
+        TextView vehicleTitleTextView;
+        ImageView vehicleImageView;
         ImageView arrowImageView;
         LinearLayout expandableLayout;
 
         public VehicleViewHolder(@NonNull View itemView) {
             super(itemView);
-            iconImageView = itemView.findViewById(R.id.iconImageView);
-            titleTextView = itemView.findViewById(R.id.titleTextView);
+            vehicleTitleTextView = itemView.findViewById(R.id.vehicleTitleTextView);
+            vehicleImageView = itemView.findViewById(R.id.vehicleImageView);
             arrowImageView = itemView.findViewById(R.id.arrowImageView);
             expandableLayout = itemView.findViewById(R.id.expandableLayout);
         }

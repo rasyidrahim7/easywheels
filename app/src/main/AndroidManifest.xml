@@ -29,6 +29,13 @@
             android:exported="false">
 
         </activity>
+        <activity
+            android:name=".VehicleOptionsActivity" />
+        <activity
+            android:name=".VehicleModelDetailsActivity">
+
+        </activity>
+
     </application>
 
 </manifest>
